@@ -12,7 +12,11 @@ client.PrintData();
 client.UpdateCost(invoker, reciever, "Boots", 5000);
 client.PrintData();
 client.Undo(reciever);
-client.ChangeName(invoker, reciever, "Boots", "NewBoots");
 client.Undo(reciever);
+client.Redo(reciever);
+
+client.ChangeName(invoker, reciever, "Boots", "NewBoots");
+client.Redo(reciever);
+
 client.PrintData();
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,14 +30,19 @@ namespace CommandPattern
         {
             AbstractCommand command = undoHistory.Pop();
             command.Undo();
-            redoHistory.Push(command);
+            redoHistory?.Push(command);
         }
 
         public void Redo()
         {
-            AbstractCommand command = redoHistory.Pop();
-            command.Redo();
-            undoHistory.Push(command);
+            if (redoHistory.Any())
+            {
+                AbstractCommand command = redoHistory.Pop();
+                command.Redo();
+                undoHistory?.Push(command);
+            }
+
+            else Debug.WriteLine("RedoStack is empty!");
         }
     }
 }
