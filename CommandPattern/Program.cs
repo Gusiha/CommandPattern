@@ -1,0 +1,18 @@
+﻿using CommandPattern;
+using System.Data;
+
+Invoker invoker = new();
+Reciever reciever = new();
+
+Client client = new();
+
+client.PrintData();
+client.UpdateCost(invoker, reciever, "Boots", 200);
+client.PrintData();
+client.UpdateCost(invoker, reciever, "Boots", 5000);
+client.PrintData();
+client.Undo(reciever);
+client.ChangeName(invoker, reciever, "Boots", "NewBoots");
+client.Undo(reciever);
+client.PrintData();
+
